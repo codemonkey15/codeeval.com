@@ -1,0 +1,1 @@
+This is an input to FileSize program.
