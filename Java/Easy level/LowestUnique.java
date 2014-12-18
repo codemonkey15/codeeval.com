@@ -8,33 +8,31 @@ class LowestUnique{
 		FileReader fr = null;
 		BufferedReader br;
 		String line;
-		ArrayList<Integer> list;
 		try{
 			fr = new FileReader(args[0]);
 			br = new BufferedReader(fr);
 			while((line = br.readLine())!=null){
 				if(!line.isEmpty()){
-					list = new ArrayList<Integer>();
+					int[] num_set = new int[10];
 					String[] nums = line.split(" ");
+					int winner = 0;
 					for(int i = 0; i < nums.length;i++){
-						list.add(Integer.parseInt(nums[i]));
+						num_set[Integer.parseInt(nums[i])]--;
 					}
-					Collections.sort(list);
-					int lowest= list.get(0);
-					boolean flag = false;
-					for(int i = 1; i < list.size();i++){
-						if(lowest != list.get(i)){
-							lowest = list.get(i);
-							if(lowest != list.get(i+1)){
-								System.out.println(i);
-								flag = true;
+					boolean unique = false;
+					for(int i = 1 ; i < num_set.length ; i++){
+						if(num_set[i]==-1){
+							unique = true;
+							for(int j = 0 ; j < nums.length ; j++){
+								if(i == Integer.parseInt(nums[j]))
+									System.out.println(j+1);
 							}
-						}	
+							break;
+						}
 					}
-					if(flag = false)
+					if(unique == false)
 						System.out.println("0");
 				}
-				System.out.println();
 			}
 		}catch(Exception e){
 			System.out.print(e);
