@@ -20,7 +20,7 @@ class DoubleSquares{
 				if(num == 0 || num==1)
 					System.out.print("1");
 				else{
-					for(int j = 0 ; j < (Math.sqrt(num))/2+1 ; j++){
+					for(int j = 0 ; j < ((int)Math.sqrt(num))-1 ; j++){
 						num1 = j*j;
 						num2 = num - num1;
 						sq = (float)Math.sqrt(num2);
